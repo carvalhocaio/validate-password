@@ -1,8 +1,15 @@
 from pydantic import BaseModel
+from typing import Literal
 
 
 class Rules(BaseModel):
-    rule: str
+    rule: Literal[
+        "minSize",
+        "minUppercase",
+        "minLowercase",
+        "minDigit",
+        "minSpecialChars",
+    ]
     value: int
 
 

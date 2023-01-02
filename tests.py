@@ -49,8 +49,7 @@ def test_verify_password_with_all_rules_and_not_pass(client: FlaskClient):
                     {"rule": "minUppercase", "value": 5},
                     {"rule": "minLowercase", "value": 9},
                     {"rule": "minDigit", "value": 4},
-                    {"rule": "minSpecialChars", "value": 2},
-                    {"rule": "noRepeated", "value": 0},
+                    {"rule": "minSpecialChars", "value": 2}
                 ],
             }
         ),
@@ -64,7 +63,6 @@ def test_verify_password_with_all_rules_and_not_pass(client: FlaskClient):
             "minLowercase",
             "minDigit",
             "minSpecialChars",
-            "noRepeated",
         ],
         "verify": False,
     }
@@ -83,7 +81,6 @@ def test_verify_password_with_all_rules_and_pass(client: FlaskClient):
                     {"rule": "minLowercase", "value": 9},
                     {"rule": "minDigit", "value": 4},
                     {"rule": "minSpecialChars", "value": 2},
-                    {"rule": "noRepeated", "value": 0},
                 ],
             }
         ),
@@ -100,7 +97,6 @@ def test_verify_password_with_each_rule_and_not_pass(client: FlaskClient):
         {"password": "PASSWORD", "rules": [{"rule": "minLowercase", "value": 5}]},
         {"password": "password", "rules": [{"rule": "minDigit", "value": 2}]},
         {"password": "password", "rules": [{"rule": "minSpecialChars", "value": 3}]},
-        {"password": "password", "rules": [{"rule": "noRepeated", "value": 0}]},
     ]
 
     output_data = [
@@ -109,7 +105,6 @@ def test_verify_password_with_each_rule_and_not_pass(client: FlaskClient):
         {"noMatch": ["minLowercase"], "verify": False},
         {"noMatch": ["minDigit"], "verify": False},
         {"noMatch": ["minSpecialChars"], "verify": False},
-        {"noMatch": ["noRepeated"], "verify": False},
     ]
 
     for _, (input_data, output_data) in enumerate(
@@ -145,14 +140,9 @@ def test_verify_password_with_each_rule_and_pass(client: FlaskClient):
             "password": "@h(i+i_9*#50vC4@#5A-v$o)_G)vYr)!k@6rS",
             "rules": [{"rule": "minSpecialChars", "value": 3}],
         },
-        {
-            "password": "@h(i+i_9*#50vC4@#5A-v$o)_G)vYr)!k@6rS",
-            "rules": [{"rule": "noRepeated", "value": 0}],
-        },
     ]
 
     output_data = [
-        {"noMatch": [], "verify": True},
         {"noMatch": [], "verify": True},
         {"noMatch": [], "verify": True},
         {"noMatch": [], "verify": True},
