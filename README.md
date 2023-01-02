@@ -1,36 +1,36 @@
 # Validate Password
 
-**Tecnologias e Ferramentas**
+**Technologies and Tools**
 
 - Python 3.10
 - PyTest
 - Flask
 - Docker
 
-## Executando a aplicação
+## Running the application
 
-Há duas maneiras de executar a aplicação para desenvolvimento: localmente via pipenv e via Docker.
+There are two ways to run the application for development: locally through pipenv or through Docker.
 
-### via Pipenv
+### Pipenv mode
 
-Para executar a aplicação localmente, é necessário a instalação do [pipenv](https://pipenv.pypa.io/en/latest/).
+To run the application locally, it's necessary to install [pipenv](https://pipenv.pypa.io/en/latest/).
 
-Com o `pipenv` instalado, podemos seguir os passos abaixo, via terminal.
+With `pipenv` installed, we can follow the steps below, through terminal.
 
 ```terminal
-# iniciar o ambiente de desenvolvimento
+# start the development environment
 $ pipenv shell
 
-# instalar as dependências
+# install the dependencies
 $ pipenv install --system
 
-# executar a aplicação
+# run the application
 $ flask --app app --debug run --port=8000
 ```
 
-### via Docker
+### Docker mode
 
-Para executar a aplicação via Docker, podemos executar o seguinte comando, via terminal:
+To run the application through Docker, we can run the next command, in the terminal:
 
 ```terminal
 docker compose up --build
@@ -38,9 +38,9 @@ docker compose up --build
 
 ---
 
-## Testes
+## Tests
 
-Para executar os testes, executamos o seguinte comando, via terminal:
+To run tests, run the nex command in the terminal:
 
 ```terminal
 pytest tests.py -v
@@ -48,17 +48,18 @@ pytest tests.py -v
 
 ---
 
-## Sobre a aplicação
+## About application
 
-A aplicação possui as seguintes rotas:
+The application has the next routes.:
 
 [POST]
 
-- `/verify`: responsável por verificar a senha de acordos com as regras estabelecidas. A senha e as regras são enviadas via JSON no body da requisição. É retornado uma lista com as pendências que a senha informada possui e um valor booleano se ela está apta as regras informadas.
+- `/verify`: route to verify the password according to the established rules. The password and rules are sent via JSON in the body of the request. A list is returned with pending issues that the entered password has and a boolean value if it complies with the entered rules.
 
-[Rotas de Documentação]
+[Documentation Routes]
 
-- `/apidoc/redoc`: documentação da API com redoc.
-- `/apidoc/swagger`: documetação da API com swagger.
+- `/apidoc/swagger`: API documentation with Swagger.
+- `/apidoc/redoc`: API documentation with Redoc.
 
 ---
+ 
