@@ -8,7 +8,7 @@ class Password:
         self.minLowercase = None
         self.minDigit = None
         self.minSpecialChars = None
-        self.noRepeted = None
+        self.noRepeated = None
 
         self.noMatch = list()
         self.verify_password = False
@@ -27,8 +27,8 @@ class Password:
                         self.minDigit = rule["value"]
                     case "minSpecialChars":
                         self.minSpecialChars = rule["value"]
-                    case "noRepeted":
-                        self.noRepeted = rule["value"]
+                    case "noRepeated":
+                        self.noRepeated = rule["value"]
 
     def verify_password_min_size(self):
         if self.minSize:
@@ -77,13 +77,13 @@ class Password:
             if countSpecialChars < self.minSpecialChars:
                 self.noMatch.append("minSpecialChars")
 
-    def verify_password_no_repeted(self):
-        if self.noRepeted == 0:
+    def verify_password_no_repeated(self):
+        if self.noRepeated == 0:
             if any(
                 letter == self.password[idx + 1]
                 for idx, letter in enumerate(self.password[:-1])
             ):
-                self.noMatch.append("noRepeted")
+                self.noMatch.append("noRepeated")
 
     def verify(self):
         self.define_rules(self.rules)
@@ -93,7 +93,7 @@ class Password:
         self.verify_password_min_lowercase()
         self.verify_password_min_digit()
         self.verify_password_min_special_chars()
-        self.verify_password_no_repeted()
+        self.verify_password_no_repeated()
 
         if not self.noMatch:
             self.verify_password = True
