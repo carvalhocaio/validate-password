@@ -63,7 +63,7 @@ class Password:
                 self.noMatch.append("minDigit")
 
     def verify_password_min_special_chars(self):
-        special_chars = "!@#$%^&*()-+\/{}[]"
+        special_chars = "!@#$%^&*()-+{}[]"
 
         if self.minSpecialChars:
             countSpecialChars = 0
